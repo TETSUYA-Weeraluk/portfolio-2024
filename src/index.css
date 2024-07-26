@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .padding-content {
+    @apply px-12 sm:px-24 md:px-28 lg:px-36;
+  }
+
+  .flex-item-gap {
+    @apply flex items-center gap-4 p-4;
+  }
+
+  .nav-item {
+    @apply hover:cursor-pointer hover:text-primary hover:text-xl transition-all duration-500 hover:underline-offset-8 hover:underline;
+  }
+}
+
+body {
+  background-color: #151515;
+  font-family: "Work Sans", sans-serif;
+}
