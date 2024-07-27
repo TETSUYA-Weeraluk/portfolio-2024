@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 
 const DefaultLayout: React.FC = () => (
-  <div className="flex flex-col gap-4 ">
+  <div className="flex-col-gap4">
     <main className="w-full h-full">
       <Outlet />
     </main>

@@ -3,32 +3,91 @@
 @tailwind utilities;
 
 @layer components {
+  .text-title {
+    @apply text-3xl lg:text-4xl font-bold text-primary;
+  }
+  .text-sub-title {
+    @apply text-2xl lg:text-3xl font-bold text-primary;
+  }
+  .text-base-web {
+    @apply text-base lg:text-lg text-tertiary;
+  }
+
+  .navbar {
+    @apply flex items-center justify-between h-[85px];
+  }
+  .logo {
+    @apply h-[50px] w-[50px];
+  }
+  .text-portfolio {
+    @apply text-tertiary text-3xl lg:text-5xl;
+  }
+  .nav-item {
+    @apply text-base lg:text-xl;
+  }
+  .nav-item-hover {
+    @apply hover:font-bold hover:text-xl lg:hover:text-3xl  hover:cursor-pointer hover:text-primary  transition-all duration-500 hover:underline-offset-8 hover:underline;
+  }
+
+  .image-portfolio {
+    @apply h-[300px] w-[300px] rounded-full;
+  }
+  .image-portfolio-hover {
+    @apply hover:scale-125  transition-all duration-500 ease-in-out;
+  }
+
   .padding-content {
     @apply px-12 sm:px-24 md:px-28 lg:px-36;
   }
 
-  .flex-item-gap {
+  .wrapper-header {
     @apply flex items-center gap-4 p-4;
   }
 
-  .flex-col-gap {
+  .wrapper-content {
     @apply flex flex-col gap-4;
   }
-
-  .nav-item {
-    @apply text-xl hover:cursor-pointer hover:text-primary hover:text-3xl transition-all duration-500 hover:underline-offset-8 hover:underline;
+  .wrapper-child-content {
+    @apply flex flex-col gap-2;
   }
 
-  .flex-item-col {
-    @apply flex flex-col items-center;
+  .wrapper-content-center {
+    @apply flex flex-col items-center gap-4;
   }
 
   .text-description-for-job {
-    @apply text-gray-300 bg-secondary bg-opacity-50 p-2 rounded-md hover:text-2xl hover:text-secondary hover:bg-gray-300 transition-all duration-500 ease-in-out;
+    @apply animate-bounce bg-secondary bg-opacity-50 p-2 rounded-md;
+  }
+
+  .text-description-for-job-hover {
+    @apply hover:font-bold hover:text-xl md:hover:text-2xl hover:text-secondary hover:bg-tertiary transition-all duration-500 ease-in-out;
+  }
+
+  .custom-button {
+    @apply px-3 py-2 rounded bg-tertiary text-secondary hover:bg-primary hover:text-tertiary transition-all duration-500;
+  }
+
+  .image-skill {
+    @apply h-[100px] w-[100px];
   }
 }
 
 body {
   background-color: #151515;
   font-family: "Zain", sans-serif;
+}
+
+.image-portfolio-hover:hover {
+  box-shadow: 0 0 20px 1px rgba(199, 54, 89, 1);
+  animation: pulseShadow 2s infinite;
+}
+
+@keyframes pulseShadow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px 5px rgba(199, 54, 89, 1);
+  }
+  50% {
+    box-shadow: 0 0 5px 2px rgba(199, 54, 89, 0.5);
+  }
 }

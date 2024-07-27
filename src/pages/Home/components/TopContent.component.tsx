@@ -2,23 +2,23 @@ import myImage from "../../../assets/26176.jpg";
 
 function TopContentComponent() {
   return (
-    <div className="flex flex-col items-center justify-center home-content-center gap-4">
+    <div className="wrapper-content-center justify-center home-content-center">
       <img
-        className="h-[300px] w-[300px] rounded-full hover:h-[400px] hover:w-[400px] transition-all duration-500 ease-in-out"
+        className="image-portfolio-hover image-portfolio image-portfolio-hover"
         src={myImage}
         alt="image"
       />
-      <div className="flex-item-col gap-4">
-        <div className="flex-item-col">
+      <div className="wrapper-content-center">
+        <div className="wrapper-content-center gap-0">
           <p className="flex items-baseline gap-2">
-            <span className="text-5xl font-bold text-primary text-test">
-              Weeraluk Sopapan
-            </span>
-            <span className="text-2xl">(Tee)</span>
+            <span className="text-title">Weeraluk Sopapan</span>
+            <span className="text-base-web">(Tee)</span>
           </p>
-          <span className="text-3xl">Frontend Developer</span>
+          <span className="text-sub-title text-tertiary">
+            Frontend Developer
+          </span>
         </div>
-        <span className="text-description-for-job">
+        <span className="text-description-for-job text-description-for-job-hover text-base-web">
           I'm currently looking for Junior Frontend Developer position.
         </span>
       </div>

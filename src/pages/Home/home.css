@@ -14,5 +14,98 @@
 }
 
 .shadow-image-about-me {
-  box-shadow: 0 0 10px 5px rgba(199, 54, 89, 1);
+  box-shadow: 0 0 10px 1px rgba(199, 54, 89, 1);
+}
+
+.parallax-effect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  background-color: #c73659;
+  color: white;
+  border-radius: 20px;
+
+  transform-style: preserve-3d;
+
+  .inner-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    font-style: italic;
+    color: white;
+    transform: translateZ(60px);
+  }
+}
+
+.parallax-effect-skill {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  /* 240b36 */
+  color: white;
+  border-radius: 20px;
+
+  transform-style: preserve-3d;
+
+  .inner-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    font-style: italic;
+    color: white;
+    transform: translateZ(60px);
+  }
+}
+
+.background-gradient-effect {
+  background: linear-gradient(-45deg, #f05941, #be3144, #872341, #22092c);
+  background-size: 300% 300%;
+
+  -webkit-animation: Animation 5s ease infinite;
+  -moz-animation: Animation 5s ease infinite;
+  animation: Animation 5s ease infinite;
+}
+
+@-webkit-keyframes Animation {
+  0% {
+    background-position: 10% 0%;
+  }
+  50% {
+    background-position: 91% 100%;
+  }
+  100% {
+    background-position: 10% 0%;
+  }
+}
+@-moz-keyframes Animation {
+  0% {
+    background-position: 10% 0%;
+  }
+  50% {
+    background-position: 91% 100%;
+  }
+  100% {
+    background-position: 10% 0%;
+  }
+}
+@keyframes Animation {
+  0% {
+    background-position: 10% 0%;
+  }
+  50% {
+    background-position: 91% 100%;
+  }
+  100% {
+    background-position: 10% 0%;
+  }
 }

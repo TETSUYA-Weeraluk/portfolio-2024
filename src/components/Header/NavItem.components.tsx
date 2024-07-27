@@ -9,7 +9,7 @@ const NavItemComponents = (props: NavItemComponentsProps) => {
   const { to, text } = props;
   return (
     <ScrollLink
-      className="nav-item"
+      className="nav-item nav-item-hover"
       to={to}
       spy={true}
       smooth={true}
