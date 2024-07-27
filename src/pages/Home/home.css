@@ -7,3 +7,8 @@
 .home-content-center {
   height: calc(100vh - (85px * 2));
 }
+
+.text-test {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}

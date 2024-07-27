@@ -12,11 +12,19 @@
   }
 
   .nav-item {
-    @apply hover:cursor-pointer hover:text-primary hover:text-xl transition-all duration-500 hover:underline-offset-8 hover:underline;
+    @apply text-xl hover:cursor-pointer hover:text-primary hover:text-3xl transition-all duration-500 hover:underline-offset-8 hover:underline;
+  }
+
+  .flex-item-col {
+    @apply flex flex-col items-center;
+  }
+
+  .text-description-for-job {
+    @apply text-gray-300 bg-secondary bg-opacity-50 p-2 rounded-md hover:text-2xl hover:text-secondary hover:bg-gray-300 transition-all duration-500 ease-in-out;
   }
 }
 
 body {
   background-color: #151515;
-  font-family: "Work Sans", sans-serif;
+  font-family: "Zain", sans-serif;
 }

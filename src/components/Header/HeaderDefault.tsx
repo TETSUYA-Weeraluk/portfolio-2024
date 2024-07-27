@@ -29,7 +29,7 @@ const HeaderDefault = () => {
     <div className="flex items-center justify-between padding-content h-[85px]">
       <Link to="/" className="flex-item-gap">
         <img className="h-[50px] w-[50px] " src={logo} alt="logo" />
-        <span className="text-tertiary text-3xl">Portfolio</span>
+        <span className="text-tertiary text-4xl">Portfolio</span>
       </Link>
       <div className="flex-item-gap text-tertiary">
         {nameItems.map((item, index) => (
