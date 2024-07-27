@@ -11,6 +11,10 @@
     @apply flex items-center gap-4 p-4;
   }
 
+  .flex-col-gap {
+    @apply flex flex-col gap-4;
+  }
+
   .nav-item {
     @apply text-xl hover:cursor-pointer hover:text-primary hover:text-3xl transition-all duration-500 hover:underline-offset-8 hover:underline;
   }

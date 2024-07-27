@@ -12,3 +12,7 @@
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
 }
+
+.shadow-image-about-me {
+  box-shadow: 0 0 10px 5px rgba(199, 54, 89, 1);
+}

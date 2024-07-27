@@ -5,7 +5,7 @@ import NavItemComponents from "./NavItem.components";
 const HeaderDefault = () => {
   const nameItems = [
     {
-      to: "about",
+      to: "about-me",
       text: "About",
     },
     {
