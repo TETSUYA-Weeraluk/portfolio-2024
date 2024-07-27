@@ -1,0 +1,9 @@
+.bg-image {
+  background-image: url("/src/assets/pexels-eberhardgross-1624438.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.home-content-center {
+  height: calc(100vh - (85px * 2));
+}

@@ -26,9 +26,9 @@ const HeaderDefault = () => {
     },
   ];
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between padding-content h-[85px]">
       <Link to="/" className="flex-item-gap">
-        <img className="h-[50px] w-[50px]" src={logo} alt="logo" />
+        <img className="h-[50px] w-[50px] " src={logo} alt="logo" />
         <span className="text-tertiary text-3xl">Portfolio</span>
       </Link>
       <div className="flex-item-gap text-tertiary">
