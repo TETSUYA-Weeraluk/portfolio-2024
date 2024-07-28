@@ -14,90 +14,151 @@ import prisma from "../../../assets/prisma.png";
 import redux from "../../../assets/redux.png";
 import rxjs from "../../../assets/rxjs.png";
 import git from "../../../assets/git.png";
+import tailwind from "../../../assets/tailwind.png";
+import mui from "../../../assets/mui.png";
+import primeng from "../../../assets/primeng.png";
+import express from "../../../assets/express.png";
+
+interface Skills {
+  title: string;
+  skills: {
+    name: string;
+    image: string;
+  }[];
+}
 
 const SkillComponent = () => {
-  const listSkill = [
+  const skills: Skills[] = [
     {
-      name: "HTML",
-      img: imgHtml,
+      title: "Programming languages",
+      skills: [
+        {
+          name: "HTML",
+          image: imgHtml,
+        },
+        {
+          name: "CSS",
+          image: imgCss,
+        },
+        {
+          name: "JavaScript",
+          image: imgJs,
+        },
+        {
+          name: "TypeScript",
+          image: imgTs,
+        },
+      ],
     },
     {
-      name: "CSS",
-      img: imgCss,
+      title: "Frontend",
+      skills: [
+        {
+          name: "React",
+          image: imgReact,
+        },
+        {
+          name: "Redux",
+          image: redux,
+        },
+        {
+          name: "Material UI",
+          image: mui,
+        },
+        {
+          name: "Angular",
+          image: imgAngular,
+        },
+        {
+          name: "PrimeNG",
+          image: primeng,
+        },
+        {
+          name: "Angular Material",
+          image: imgAngular,
+        },
+        {
+          name: "RxJS",
+          image: rxjs,
+        },
+        {
+          name: "Tailwind CSS",
+          image: tailwind,
+        },
+      ],
     },
     {
-      name: "JavaScript",
-      img: imgJs,
+      title: "Backend",
+      skills: [
+        {
+          name: "NodeJS",
+          image: imgNode,
+        },
+        {
+          name: "Express",
+          image: express,
+        },
+        {
+          name: "NestJS",
+          image: imgNestJs,
+        },
+        {
+          name: "MongoDB",
+          image: imgMongo,
+        },
+        {
+          name: "PostgreSQL",
+          image: imgPostgresql,
+        },
+        {
+          name: "Prisma",
+          image: prisma,
+        },
+      ],
     },
     {
-      name: "TypeScript",
-      img: imgTs,
-    },
-    {
-      name: "React",
-      img: imgReact,
-    },
-    {
-      name: "Redux",
-      img: redux,
-    },
-    {
-      name: "Angular",
-      img: imgAngular,
-    },
-    {
-      name: "RxJS",
-      img: rxjs,
-    },
-    {
-      name: "NodeJS",
-      img: imgNode,
-    },
-    {
-      name: "NestJS",
-      img: imgNestJs,
-    },
-    {
-      name: "MongoDB",
-      img: imgMongo,
-    },
-    {
-      name: "PostgreSQL",
-      img: imgPostgresql,
-    },
-    {
-      name: "Prisma",
-      img: prisma,
-    },
-    {
-      name: "Docker",
-      img: imgDocker,
-    },
-    {
-      name: "Git",
-      img: git,
+      title: "Tools & Another skill",
+      skills: [
+        {
+          name: "Docker",
+          image: imgDocker,
+        },
+        {
+          name: "Git",
+          image: git,
+        },
+      ],
     },
   ];
+
   return (
     <>
-      <h1 className="text-title text-center">Skill</h1>
-      <div className="wrapper-header p-0 flex-wrap justify-center">
-        {listSkill &&
-          listSkill.map((skill) => (
-            <div className="wrapper-content-center">
-              <ImageProjectComponent skill>
-                <span className="text-tertiary">
-                  <img
-                    className="image-skill"
-                    src={skill.img}
-                    alt={skill.name}
-                  />
-                </span>
-              </ImageProjectComponent>
-              <span className="text-base-web">{skill.name}</span>
-            </div>
-          ))}
+      <div className="text-title text-center underline-offset-8 underline">
+        Skill
       </div>
+      {skills &&
+        skills.map((skill) => (
+          <div className="space-y-4">
+            <h1 className="text-sub-title text-secondary">{skill.title}</h1>
+            <div className="wrapper-header p-0 flex-wrap">
+              {skill.skills &&
+                skill.skills.map((skill) => (
+                  <div className="wrapper-content-center">
+                    <ImageProjectComponent skill>
+                      <span className="text-tertiary">
+                        <img
+                          className="image-skill"
+                          src={skill.image}
+                          alt={skill.name}
+                        />
+                      </span>
+                    </ImageProjectComponent>
+                    <span className="text-base-web">{skill.name}</span>
+                  </div>
+                ))}
+            </div>
+          </div>
+        ))}
     </>
   );
 };

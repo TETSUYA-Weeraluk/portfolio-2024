@@ -28,7 +28,7 @@ const PersonalInformaltionComponent = () => {
       <div className="w-full">
         {listAboueMe &&
           listAboueMe.map((list, index) => (
-            <p key={index} className="text-lg flex items-center gap-1">
+            <p key={index} className="text-base-web flex items-center gap-1">
               <span>{list.title} : </span>
               <span>{list.value}</span>
             </p>

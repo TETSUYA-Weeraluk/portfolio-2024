@@ -68,7 +68,7 @@
   }
 
   .image-skill {
-    @apply h-[100px] w-[100px];
+    @apply h-[50px] w-[50px];
   }
 }
 

@@ -8,7 +8,9 @@ const ImageProjectComponent = (props: {
   return (
     <Tilt
       className={`background-stripes ${
-        props.skill ? "parallax-effect-skill background-gradient-effect" : "parallax-effect"
+        props.skill
+          ? "parallax-effect-skill background-gradient-effect"
+          : "background-gradient-effect-project parallax-effect"
       }`}
       perspective={500}
       glareEnable={true}

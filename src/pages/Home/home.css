@@ -17,39 +17,13 @@
   box-shadow: 0 0 10px 1px rgba(199, 54, 89, 1);
 }
 
-.parallax-effect {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  height: 300px;
-  background-color: #c73659;
-  color: white;
-  border-radius: 20px;
-
-  transform-style: preserve-3d;
-
-  .inner-element {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 35px;
-    font-style: italic;
-    color: white;
-    transform: translateZ(60px);
-  }
-}
-
 .parallax-effect-skill {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 200px;
-  /* 240b36 */
+  width: 100px;
+  height: 100px;
   color: white;
   border-radius: 20px;
 
@@ -68,12 +42,14 @@
 }
 
 .background-gradient-effect {
-  background: linear-gradient(-45deg, #f05941, #be3144, #872341, #22092c);
+  /* background: linear-gradient(-210deg, #ead6ee, #a91d3a, #d9ecc7); */
+  background: linear-gradient(-210deg, #ead6ee, #d9ecc7, #a91d3a);
+
   background-size: 300% 300%;
 
-  -webkit-animation: Animation 5s ease infinite;
-  -moz-animation: Animation 5s ease infinite;
-  animation: Animation 5s ease infinite;
+  -webkit-animation: Animation 10s ease infinite;
+  -moz-animation: Animation 10s ease infinite;
+  animation: Animation 10s ease infinite;
 }
 
 @-webkit-keyframes Animation {

@@ -1,3 +1,5 @@
+import { Divider } from "@mui/joy";
+
 const EducationComponent = () => {
   const listEducation = [
     {
@@ -17,25 +19,21 @@ const EducationComponent = () => {
   return (
     <div className="wrapper-child-content">
       <h1 className="text-sub-title text-secondary">Education</h1>
-      <div className="w-full wrapper-child-content ">
+      <div className="w-full wrapper-child-content space-y-2">
         {listEducation &&
           listEducation.map((list, index) => (
-            <div className="w-full" key={list.province}>
+            <div className="w-full space-y-4" key={list.province}>
               <div className="w-full">
-                <p className="flex justify-between text-lg">
+                <p className="flex justify-between text-base-web">
                   <span>{list.school}</span>
                   <span>{list.province}</span>
                 </p>
-                <p className="flex justify-between italic">
+                <p className="flex justify-between italic text-sm lg:text-base">
                   <span>{list.description}</span>
                   <span>{list.year}</span>
                 </p>
               </div>
-              {index !== listEducation.length - 1 && (
-                <div className="flex flex-col justify-center items-center">
-                  <div className="h-[1px] w-full border border-dashed mt-2"></div>
-                </div>
-              )}
+              {index !== listEducation.length - 1 && <Divider />}
             </div>
           ))}
       </div>

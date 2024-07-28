@@ -21,7 +21,7 @@ const AboutMeComponent = () => {
       <div className="wrapper-content">
         <div className="wrapper-content">
           <h1 className=" underline-offset-8 underline text-title">About me</h1>
-          <p className="text-base md:text-lg">{summary}</p>
+          <p className="text-base-web">{summary}</p>
           <PersonalInformaltionComponent />
         </div>
 
