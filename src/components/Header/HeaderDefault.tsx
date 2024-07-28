@@ -20,10 +20,6 @@ const HeaderDefault = () => {
       to: "project",
       text: "Project",
     },
-    {
-      to: "contact",
-      text: "Contact",
-    },
   ];
   return (
     <div className="navbar padding-content">

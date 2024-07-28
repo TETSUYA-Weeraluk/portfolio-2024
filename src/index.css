@@ -37,7 +37,7 @@
   }
 
   .padding-content {
-    @apply px-12 sm:px-24 md:px-28 lg:px-36;
+    @apply px-6 sm:px-12 md:px-28 lg:px-36;
   }
 
   .wrapper-header {

@@ -27,12 +27,8 @@ export default function Home() {
         <SkillComponent />
       </Element>
 
-      <Element className="padding-content space-y-10" name="project">
+      <Element className="padding-content space-y-10 mb-10" name="project">
         <ProjectComponent />
-      </Element>
-
-      <Element className="padding-content" name="contact">
-        <h1 className="text-center text-3xl font-bold">Contact</h1>
       </Element>
     </div>
   );

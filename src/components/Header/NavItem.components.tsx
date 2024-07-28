@@ -13,7 +13,8 @@ const NavItemComponents = (props: NavItemComponentsProps) => {
       to={to}
       spy={true}
       smooth={true}
-      duration={500}
+      duration={1000}
+      delay={200}
     >
       {text}
     </ScrollLink>

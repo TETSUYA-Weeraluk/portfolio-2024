@@ -54,9 +54,9 @@ sending data back to the client to ensure correct functionality.`,
             </div>
             {index !== listExperience.length - 1 && (
               <div className="wrapper-content items-center justify-center w-full mb-4">
-                <div className="w-[10px] h-[10px] rounded-full bg-white"></div>
-                <div className="h-[100px] w-[1px] bg-white"></div>
-                <div className="w-[10px] h-[10px] rounded-full bg-white"></div>
+                <div className="w-[10px] h-[10px] rounded-full bg-gray-400"></div>
+                <div className="h-[100px] w-[1px] bg-gray-500"></div>
+                <div className="w-[10px] h-[10px] rounded-full bg-gray-400"></div>
               </div>
             )}
           </div>
