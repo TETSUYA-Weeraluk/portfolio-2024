@@ -40,7 +40,7 @@ const ProjectComponent = () => {
   ];
   return (
     <>
-      <h1 className="text-title text-center">Project</h1>
+      <h1 className="text-title text-center underline-offset-8 underline">Project</h1>
       <div className="wrapper-header p-0 flex-wrap justify-center">
         {listProject &&
           listProject.map((project) => (
