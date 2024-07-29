@@ -1,39 +1,37 @@
 import { Divider } from "@mui/joy";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
 
 const EducationComponent = () => {
-  const listEducation = [
-    {
-      school: "Bangkok University",
-      province: "Pathum thani",
-      year: "2017-2021",
-      description: "Bachelor's degree in Computer Science. 2.89 GPA",
-    },
-    {
-      school: "Phuket Wittayalai School",
-      province: "Phuket",
-      year: "2011-2017",
-      description: "English-Mathematics Program. 2.98 GPA",
-    },
-  ];
+  const education = useSelector(
+    (state: RootState) => state.home.portfolio.Education
+  );
+
+  const convertDateToYear = (date: string) => {
+    return new Date(date).getFullYear().toString();
+  };
 
   return (
     <div className="wrapper-child-content">
       <h1 className="text-sub-title text-secondary">Education</h1>
       <div className="w-full wrapper-child-content space-y-2">
-        {listEducation &&
-          listEducation.map((list, index) => (
-            <div className="w-full space-y-4" key={list.province}>
+        {education &&
+          education.map((list, index) => (
+            <div className="w-full space-y-4" key={list.school}>
               <div className="w-full">
                 <p className="flex justify-between text-base-web">
                   <span>{list.school}</span>
-                  <span>{list.province}</span>
+                  <span>{list.location}</span>
                 </p>
                 <p className="flex justify-between italic text-sm lg:text-base">
                   <span>{list.description}</span>
-                  <span>{list.year}</span>
+                  <span>
+                    {convertDateToYear(list.startDate)} -{" "}
+                    {convertDateToYear(list.endDate)}
+                  </span>
                 </p>
               </div>
-              {index !== listEducation.length - 1 && <Divider />}
+              {index !== education.length - 1 && <Divider />}
             </div>
           ))}
       </div>

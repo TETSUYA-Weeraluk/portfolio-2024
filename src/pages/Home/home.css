@@ -1,5 +1,5 @@
 .bg-image {
-  background-image: url("/src/assets/pexels-eberhardgross-1624438.jpg");
+  background-image: url("assets/pexels-eberhardgross-1624438.jpg");
   background-size: cover;
   background-position: center;
 }

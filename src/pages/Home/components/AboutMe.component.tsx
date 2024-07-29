@@ -1,10 +1,10 @@
-import aboutMeImage from "../../../assets/26088.jpg";
+import { useSelector } from "react-redux";
 import EducationComponent from "./Education.component";
 import PersonalInformaltionComponent from "./PersonalInformaltion.component";
+import { RootState } from "../../../store";
 
 const AboutMeComponent = () => {
-  const summary =
-    "I have 1 year of experience in web application development,specializing in JavaScript and TypeScript. I am skilled in developing web applications using React and Angular. My career objective is to become Fullstack Developer. I hold a Bachelor's degree in Computer Science from Bangkok University.";
+  const aboutMe = useSelector((state: RootState) => state.home.portfolio);
 
   return (
     <div
@@ -14,14 +14,14 @@ const AboutMeComponent = () => {
       <div className="mx-auto h-full">
         <img
           className="h-full w-[250px] object-cover rounded-md shadow-image-about-me"
-          src={aboutMeImage}
+          src={`/assets/${aboutMe.imageAboutMe}`}
           alt="about-me-about"
         />
       </div>
       <div className="wrapper-content">
         <div className="wrapper-content">
           <h1 className=" underline-offset-8 underline text-title">About me</h1>
-          <p className="text-base-web">{summary}</p>
+          <p className="text-base-web">{aboutMe.content}</p>
           <PersonalInformaltionComponent />
         </div>
 

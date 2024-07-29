@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/teddy.png";
+// import logo from "../../assets/teddy.png";
 import NavItemComponents from "./NavItem.components";
 
 const HeaderDefault = () => {
@@ -24,7 +24,7 @@ const HeaderDefault = () => {
   return (
     <div className="navbar padding-content">
       <Link to="/" className="wrapper-header">
-        <img className="logo" src={logo} alt="logo" />
+        {/* <img className="logo" src={logo} alt="logo" /> */}
         <span className="text-portfolio">Portfolio</span>
       </Link>
       <div className="wrapper-header text-tertiary">

@@ -1,119 +1,66 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { AboutMe, ResponseFormApi } from "../pages/Home/type";
+import { BASE_API, pathUrl } from "../configs/configs";
 
-export interface HomeState {
-  pokemon: Pokemon[];
-  pokemonById: PokemonDetail;
-  welcomeText: string;
+export interface PortfolioState {
+  portfolio: AboutMe;
   loading?: "idle" | "pending" | "succeeded" | "failed";
   error?: string;
 }
 
-export interface Pokemon {
-  name: string;
-}
-
-export interface PokemonResponse {
-  count: number;
-  next: string;
-  previous: null;
-  results: Pokemon[];
-}
-
-export interface Pagination {
-  limit: number;
-  page: number;
-}
-
-export interface PokemonDetail {
-  stats: {
-    base_stat: number;
-    effort: number;
-    stat: {
-      name: string;
-    };
-  }[];
-  types: {
-    slot: number;
-    type: {
-      name: string;
-    };
-  }[];
-}
-
-const initialState: HomeState = {
-  pokemon: [],
-  pokemonById: {
-    stats: [],
-    types: [],
+const initialState: PortfolioState = {
+  portfolio: {
+    id: "",
+    name: "",
+    nickname: "",
+    position: "",
+    welcomeText: "",
+    image: "",
+    content: "",
+    imageAboutMe: "",
+    PersonalInfo: [],
+    Education: [],
+    Experience: [],
+    Skills: [],
+    Projects: [],
+    User: {
+      id: "",
+      email: "",
+    },
   },
-  welcomeText: "",
   loading: "idle",
   error: "",
 };
 
-const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
+export const fetchPortfolio = createAsyncThunk<AboutMe>(
+  "home/fetchPortfolio",
+  async () => {
+    const response = await axios.get<ResponseFormApi<AboutMe[]>>(
+      `${BASE_API}${pathUrl.aboutMe.get}`
+    );
 
-export const fetchPokemon = createAsyncThunk<Pokemon[], Pagination>(
-  "home/fetchPokemon",
-  async (params: Pagination) => {
-    const response = await axios.get<PokemonResponse>(BASE_URL, {
-      params: {
-        limit: params.limit,
-        offset: params.page * params.limit,
-      },
-    });
-
-    return response.data.results;
-  }
-);
-
-export const fetchPokemonById = createAsyncThunk<PokemonDetail, string>(
-  "home/fetchPokemonById",
-  async (id: string) => {
-    const response = await axios.get<PokemonDetail>(`${BASE_URL}/${id}`);
-    const data = {
-      stats: response.data.stats,
-      types: response.data.types,
-    };
-
-    return data;
+    return response.data.data[0];
   }
 );
 
 const homeSlice = createSlice({
   name: "home",
   initialState,
-  reducers: {
-    welcomeToHomePage: (state, action: PayloadAction<string>) => {
-      state.welcomeText = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchPokemon.pending, (state, action) => {
+    builder.addCase(fetchPortfolio.pending, (state, action) => {
       state.loading = action.payload;
     });
-    builder.addCase(fetchPokemon.fulfilled, (state, action) => {
-      state.pokemon = action.payload;
+    builder.addCase(fetchPortfolio.fulfilled, (state, action) => {
+      state.portfolio = action.payload;
       state.loading = "succeeded";
     });
-    builder.addCase(fetchPokemon.rejected, (state, action) => {
-      state.loading = "failed";
-      state.error = action.error.message || "";
-    });
-    builder.addCase(fetchPokemonById.pending, (state, action) => {
-      state.loading = action.payload;
-    });
-    builder.addCase(fetchPokemonById.fulfilled, (state, action) => {
-      state.pokemonById = action.payload;
-      state.loading = "succeeded";
-    });
-    builder.addCase(fetchPokemonById.rejected, (state, action) => {
+    builder.addCase(fetchPortfolio.rejected, (state, action) => {
       state.loading = "failed";
       state.error = action.error.message || "";
     });
   },
 });
 
-export const { welcomeToHomePage } = homeSlice.actions;
 export default homeSlice.reducer;
