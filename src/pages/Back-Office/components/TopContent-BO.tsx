@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Button } from "@mui/material";
 import DialogEditWelcome from "./dialog-edit.tsx/Dialog-Edit-MainContent";
 import { useFormContext } from "react-hook-form";
-import { FaRegEdit } from "react-icons/fa";
+import ButtonEditComponent from "./ButtonEdit.component";
 
 const TopContentBO = () => {
   // const aboutMe = useSelector((state: RootState) => state.home.portfolio);
@@ -39,23 +38,7 @@ const TopContentBO = () => {
           <div className="flex items-baseline gap-2">
             <span className="text-title">{aboutMe.name}</span>
             <span className="text-base-web">({aboutMe.nickname})</span>
-            <Button
-              sx={{
-                color: "#fff",
-                border: "none",
-                padding: "0",
-                "&:hover": {
-                  border: "none",
-                  scale: "1.2",
-                },
-                minWidth: "0",
-                fontSize: "1.25rem",
-              }}
-              variant="outlined"
-              onClick={handleClickOpen}
-            >
-              <FaRegEdit />
-            </Button>
+            <ButtonEditComponent handleClickOpen={handleClickOpen} />
           </div>
           <span className="text-sub-title text-tertiary">
             {aboutMe.position}

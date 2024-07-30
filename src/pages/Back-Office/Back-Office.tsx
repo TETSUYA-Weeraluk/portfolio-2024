@@ -9,8 +9,6 @@ import ExpBO from "./components/Exp-BO";
 import "./Back-Office.css";
 import { FormProvider, useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
 
 const BackOfficePage = () => {
   const dispatch = useAppDispatch();
@@ -33,8 +31,6 @@ const BackOfficePage = () => {
   return (
     <FormProvider {...method}>
       <div className="wrapper-content text-tertiary gap-16">
-        <ToastContainer />
-
         <div className="w-full bg-image min-h-screen max-h-screen">
           <TopContentBO />
         </div>

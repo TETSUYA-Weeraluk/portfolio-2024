@@ -1,10 +1,22 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
 import PersonalItemBO from "./PersonalItem-BO";
 import EducationBO from "./Education-BO";
+import ButtonEditComponent from "./ButtonEdit.component";
+import { useState } from "react";
+import DialogEditAboutMe from "./dialog-edit.tsx/Dialog-Edit-AboutMe";
+import { useFormContext } from "react-hook-form";
 
 const AboutMeBO = () => {
-  const aboutMe = useSelector((state: RootState) => state.home.portfolio);
+  const [open, setOpen] = useState(false);
+
+  const { watch } = useFormContext();
+
+  const imageAboutMe = watch("imageAboutMe");
+  const content = watch("content");
+  const id = watch("id");
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   return (
     <div
@@ -14,14 +26,25 @@ const AboutMeBO = () => {
       <div className="mx-auto h-full">
         <img
           className="h-full w-[250px] object-cover rounded-md shadow-image-about-me"
-          src={`/assets/${aboutMe.imageAboutMe}`}
+          src={`/assets/${imageAboutMe}`}
           alt="about-me-about"
         />
       </div>
       <div className="wrapper-content">
         <div className="wrapper-content">
           <h1 className=" underline-offset-8 underline text-title">About me</h1>
-          <p className="text-base-web">{aboutMe.content}</p>
+          <p className="text-base-web">{content}</p>
+          <div>
+            <ButtonEditComponent handleClickOpen={handleClickOpen} />
+            <DialogEditAboutMe
+              open={open}
+              handleClose={() => setOpen(false)}
+              data={{
+                id: id,
+                content: content,
+              }}
+            />
+          </div>
           <PersonalItemBO />
         </div>
 

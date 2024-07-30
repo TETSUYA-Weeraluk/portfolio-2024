@@ -12,3 +12,8 @@ export interface MainContent {
   welcomeText: string;
   image: string;
 }
+
+export interface AboutMeContent {
+  id: string;
+  content: string;
+}

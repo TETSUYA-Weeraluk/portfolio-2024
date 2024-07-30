@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { ResponseFormApi } from "../pages/Home/type";
 import { BASE_API, pathUrl } from "../configs/configs";
-import { MainContent } from "../pages/Back-Office/type";
+import { AboutMeContent, MainContent } from "../pages/Back-Office/type";
 
 export interface backofficeState {
   loading?: "idle" | "pending" | "succeeded" | "failed";
@@ -18,14 +18,29 @@ export const updateMainContent = createAsyncThunk(
   "backoffice/updateMainContent",
   async (params: { id: string; data: MainContent }) => {
     console.log(params.data);
-    const mainContent = await axios.patch<ResponseFormApi<MainContent>>(
+    const response = await axios.patch<ResponseFormApi<MainContent>>(
       `${BASE_API}${pathUrl.aboutMe.get}/${params.id}`,
       {
         ...params.data,
       }
     );
 
-    return mainContent.data;
+    return response.data;
+  }
+);
+
+export const updateAboutMe = createAsyncThunk(
+  "backoffice/updateAboutMe",
+  async (params: { id: string; data: AboutMeContent }) => {
+    console.log(params.data);
+    const response = await axios.patch<ResponseFormApi<AboutMeContent>>(
+      `${BASE_API}${pathUrl.aboutMe.get}/${params.id}`,
+      {
+        ...params.data,
+      }
+    );
+
+    return response.data.data;
   }
 );
 

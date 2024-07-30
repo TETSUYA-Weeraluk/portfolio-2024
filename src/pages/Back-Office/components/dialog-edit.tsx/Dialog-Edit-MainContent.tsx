@@ -1,17 +1,10 @@
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  TextField,
-} from "@mui/material";
+import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Controller, useForm, useFormContext } from "react-hook-form";
 import { useAppDispatch } from "../../../../store";
 import { updateMainContent } from "../../../../store/backOfficeSlice";
 import { MainContent, ResponseAPI } from "../../type";
-import DialogAlert from "../Dialog-alert";
+import BaseDialogEdit from "./Base-Dialog-Edit";
 
 interface DialogEditWelcomeProps {
   open: boolean;
@@ -76,112 +69,71 @@ const DialogEditWelcome = (props: DialogEditWelcomeProps) => {
   };
 
   return (
-    <Dialog
-      maxWidth="lg"
+    <BaseDialogEdit
       open={open}
-      onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
+      openDialogAlert={openDialogAlert}
+      handleClose={handleClose}
+      handleCloseDialogAlert={handleCloseDialogAlert}
+      updateData={updateData}
     >
-      <DialogTitle id="alert-dialog-title">Edit</DialogTitle>
-      <DialogContent className="space-y-4">
-        <div className="grid grid-cols-3 gap-4">
-          <div className="w-full space-y-2">
-            <h1 className="text-base">Name</h1>
-            <Controller
-              name="name"
-              control={control}
-              render={({ field }) => (
-                <TextField className="w-full" {...field} placeholder="Name" />
-              )}
-            />
-          </div>
-
-          <div className="w-full space-y-2">
-            <h1 className="text-base">Nickname</h1>
-            <Controller
-              name="nickname"
-              control={control}
-              render={({ field }) => (
-                <TextField
-                  className="w-full"
-                  {...field}
-                  placeholder="Nickname"
-                />
-              )}
-            />
-          </div>
-
-          <div className="w-full space-y-2">
-            <h1 className="text-base">Position</h1>
-            <Controller
-              name="position"
-              control={control}
-              render={({ field }) => (
-                <TextField
-                  className="w-full"
-                  {...field}
-                  placeholder="Position"
-                />
-              )}
-            />
-          </div>
-        </div>
+      <div className="grid grid-cols-3 gap-4">
         <div className="w-full space-y-2">
-          <h1 className="text-base">Welcome Text</h1>
+          <h1 className="text-base">Name</h1>
           <Controller
-            name="welcomeText"
+            name="name"
             control={control}
             render={({ field }) => (
-              <TextField className="w-full" {...field} placeholder="Hi" />
+              <TextField className="w-full" {...field} placeholder="Name" />
             )}
           />
         </div>
+
         <div className="w-full space-y-2">
-          <h1 className="text-base">Image</h1>
+          <h1 className="text-base">Nickname</h1>
           <Controller
-            name="image"
+            name="nickname"
             control={control}
             render={({ field }) => (
-              <div className="space-y-4">
-                <TextField className="w-full" {...field} placeholder="image" />
-                <img src={field.value} alt="" />
-              </div>
+              <TextField className="w-full" {...field} placeholder="Nickname" />
             )}
           />
         </div>
-      </DialogContent>
-      <DialogActions>
-        <Button
-          sx={{
-            backgroundColor: "#C73659",
-            color: "white",
-            "&:hover": {
-              backgroundColor: "#A91D3A",
-            },
-          }}
-          onClick={updateData}
-        >
-          Update
-        </Button>
-        <Button
-          sx={{
-            backgroundColor: "#FFFFFF",
-            color: "#C73659",
-          }}
-          className="button-cancel"
-          onClick={handleClose}
-          autoFocus
-        >
-          Cancel
-        </Button>
-      </DialogActions>
 
-      <DialogAlert
-        open={openDialogAlert}
-        handlecCloseDialogAlert={handleCloseDialogAlert}
-      />
-    </Dialog>
+        <div className="w-full space-y-2">
+          <h1 className="text-base">Position</h1>
+          <Controller
+            name="position"
+            control={control}
+            render={({ field }) => (
+              <TextField className="w-full" {...field} placeholder="Position" />
+            )}
+          />
+        </div>
+      </div>
+      <div className="w-full space-y-2">
+        <h1 className="text-base">Welcome Text</h1>
+        <Controller
+          name="welcomeText"
+          control={control}
+          render={({ field }) => (
+            <TextField className="w-full" {...field} placeholder="Hi" />
+          )}
+        />
+      </div>
+      <div className="w-full space-y-2">
+        <h1 className="text-base">Image</h1>
+        <Controller
+          name="image"
+          control={control}
+          render={({ field }) => (
+            <div className="space-y-4">
+              <TextField className="w-full" {...field} placeholder="image" />
+              <img src={field.value} alt="" />
+            </div>
+          )}
+        />
+      </div>
+    </BaseDialogEdit>
   );
 };
 
