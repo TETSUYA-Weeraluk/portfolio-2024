@@ -18,12 +18,12 @@ export interface AboutMe {
   image: string;
   content: string;
   imageAboutMe: string;
-  PersonalInfo: PerosnalInfo[];
-  Education: Education[];
-  Experience: Experience[];
-  Skill: Skills[];
-  Project: Projects[];
-  User: User;
+  personalInfo: PerosnalInfo[];
+  education: Education[];
+  experience: Experience[];
+  skill: Skills[];
+  project: Projects[];
+  user: User;
 }
 
 export enum LibraryIcon {
@@ -55,7 +55,7 @@ export interface Experience {
   location: string;
   startDate: string;
   endDate: string;
-  ExperienceDescription: ExperienceDescription[];
+  experienceDescription: ExperienceDescription[];
 }
 
 export interface ExperienceDescription {

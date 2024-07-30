@@ -4,7 +4,7 @@ import { RootState } from "../../../store";
 
 const EducationComponent = () => {
   const education = useSelector(
-    (state: RootState) => state.home.portfolio.Education
+    (state: RootState) => state.home.portfolio.education
   );
 
   const convertDateToYear = (date: string) => {

@@ -5,7 +5,7 @@ import { RootState } from "../../../store";
 
 const PersonalInformaltionComponent = () => {
   const personalList = useSelector(
-    (state: RootState) => state.home.portfolio.PersonalInfo
+    (state: RootState) => state.home.portfolio.personalInfo
   );
   const dynamicIcon = (icon: string, library: "Fa" | "Md") => {
     switch (library) {

@@ -7,7 +7,7 @@ import { RootState } from "../../../store";
 
 const ProjectComponent = () => {
   const listProject = useSelector(
-    (state: RootState) => state.home.portfolio.Project
+    (state: RootState) => state.home.portfolio.project
   );
 
   return (

@@ -3,7 +3,7 @@ import ImageProjectComponent from "./ImageProject.component";
 import { RootState } from "../../../store";
 
 const SkillComponent = () => {
-  const skills = useSelector((state: RootState) => state.home.portfolio.Skill);
+  const skills = useSelector((state: RootState) => state.home.portfolio.skill);
 
   return (
     <>

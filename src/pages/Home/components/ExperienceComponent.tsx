@@ -4,7 +4,7 @@ import { format } from "date-fns";
 
 const ExperienceComponent = () => {
   const listExperience = useSelector(
-    (state: RootState) => state.home.portfolio.Experience
+    (state: RootState) => state.home.portfolio.experience
   );
 
   const convertDateToMonthYear = (dateString: string) => {
@@ -18,7 +18,8 @@ const ExperienceComponent = () => {
       <h1 className="text-title text-center underline-offset-8 underline">
         Experience
       </h1>
-      {listExperience.length > 0 &&
+      {listExperience &&
+        listExperience.length > 0 &&
         listExperience.map((experience, index) => (
           <div className="wrapper-content" key={experience.company}>
             <div key={experience.company} className="mb-4">
@@ -36,8 +37,8 @@ const ExperienceComponent = () => {
                 {experience.position}
               </span>
               <ul className="text-base-web space-y-4 mt-4">
-                {experience.ExperienceDescription &&
-                  experience.ExperienceDescription.map((desc, index) => (
+                {experience.experienceDescription &&
+                  experience.experienceDescription.map((desc, index) => (
                     <li key={index}>- {desc.description}</li>
                   ))}
               </ul>
