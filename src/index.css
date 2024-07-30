@@ -70,6 +70,10 @@
   .image-skill {
     @apply h-[50px] w-[50px];
   }
+
+  .button-update {
+    @apply px-3 py-2 rounded bg-tertiary text-secondary hover:bg-primary hover:text-tertiary transition-all duration-500;
+  }
 }
 
 body {

@@ -19,12 +19,12 @@ const initialState: PortfolioState = {
     image: "",
     content: "",
     imageAboutMe: "",
-    PersonalInfo: [],
-    Education: [],
-    Experience: [],
-    Skills: [],
-    Projects: [],
-    User: {
+    personalInfo: [],
+    education: [],
+    experience: [],
+    skill: [],
+    project: [],
+    user: {
       id: "",
       email: "",
     },

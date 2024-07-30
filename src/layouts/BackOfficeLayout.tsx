@@ -1,9 +1,11 @@
-import React from "react";
+import { Outlet } from "react-router-dom";
 
 const BackOfficeLayout = () => {
   return (
-    <div>
-      <main></main>
+    <div className="flex-col-gap4">
+      <main className="w-full h-full">
+        <Outlet />
+      </main>
     </div>
   );
 };
