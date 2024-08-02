@@ -37,6 +37,7 @@ export interface PerosnalInfo {
   description: string;
   libraryIcon: LibraryIcon;
   icon: string;
+  order: number;
 }
 
 export interface Education {
@@ -46,6 +47,7 @@ export interface Education {
   location: string;
   startDate: string;
   endDate: string;
+  order: number;
 }
 
 export interface Experience {
@@ -56,6 +58,7 @@ export interface Experience {
   startDate: string;
   endDate: string;
   experienceDescription: ExperienceDescription[];
+  order: number;
 }
 
 export interface ExperienceDescription {
@@ -67,12 +70,14 @@ export interface Skills {
   id: string;
   title: string;
   skillDescription: SkillDescription[];
+  order: number;
 }
 
 export interface SkillDescription {
   id: string;
   description: string;
   image: string;
+  order: number;
 }
 
 export interface Projects {
@@ -82,4 +87,5 @@ export interface Projects {
   description: string;
   link_github: string;
   link_demo: string;
+  order: number;
 }

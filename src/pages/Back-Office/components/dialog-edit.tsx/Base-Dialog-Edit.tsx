@@ -29,7 +29,7 @@ const BaseDialogEdit = (props: BaseDialogEditProps) => {
   } = props;
   return (
     <Dialog
-      maxWidth="md"
+      maxWidth="lg"
       fullWidth
       open={open}
       onClose={handleClose}

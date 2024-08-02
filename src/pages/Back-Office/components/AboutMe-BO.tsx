@@ -36,14 +36,16 @@ const AboutMeBO = () => {
           <p className="text-base-web">{content}</p>
           <div>
             <ButtonEditComponent handleClickOpen={handleClickOpen} />
-            <DialogEditAboutMe
-              open={open}
-              handleClose={() => setOpen(false)}
-              data={{
-                id: id,
-                content: content,
-              }}
-            />
+            {open && (
+              <DialogEditAboutMe
+                open={open}
+                handleClose={() => setOpen(false)}
+                data={{
+                  id: id,
+                  content: content,
+                }}
+              />
+            )}
           </div>
           <PersonalItemBO />
         </div>

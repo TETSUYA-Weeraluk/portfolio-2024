@@ -116,7 +116,7 @@ const DialogEditWelcome = (props: DialogEditWelcomeProps) => {
           name="welcomeText"
           control={control}
           render={({ field }) => (
-            <TextField className="w-full" {...field} placeholder="Hi" />
+            <TextField className="w-full" {...field} placeholder="Hi" multiline />
           )}
         />
       </div>

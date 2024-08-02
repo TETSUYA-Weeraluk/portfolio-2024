@@ -1,12 +1,16 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
 import * as FaIcons from "react-icons/fa";
 import * as MdIcons from "react-icons/md";
+import DialogEditPersonal from "./dialog-edit.tsx/Dialog-Edit-Personal";
+import ButtonEditComponent from "./ButtonEdit.component";
+import { useState } from "react";
+import { useFormContext } from "react-hook-form";
+import { PerosnalInfo } from "../../Home/type";
 
 const PersonalItemBO = () => {
-  const personalList = useSelector(
-    (state: RootState) => state.home.portfolio.personalInfo
-  );
+  const [open, setOpen] = useState(false);
+  const { watch } = useFormContext();
+  const personalList = watch("personalInfo") as PerosnalInfo[];
+
   const dynamicIcon = (icon: string, library: "Fa" | "Md") => {
     switch (library) {
       case "Fa": {
@@ -20,6 +24,14 @@ const PersonalItemBO = () => {
       default:
         return null;
     }
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClickClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -39,6 +51,16 @@ const PersonalItemBO = () => {
             </p>
           ))}
       </div>
+      <div>
+        <ButtonEditComponent handleClickOpen={handleClickOpen} />
+      </div>
+      {open && (
+        <DialogEditPersonal
+          open={open}
+          handleClose={() => handleClickClose()}
+          data={personalList}
+        />
+      )}
     </div>
   );
 };
