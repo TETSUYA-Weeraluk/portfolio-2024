@@ -10,6 +10,7 @@ import {
 import { useAppDispatch } from "../../../../store";
 import {
   Button,
+  FormControl,
   IconButton,
   InputLabel,
   MenuItem,
@@ -30,6 +31,7 @@ const DialogEditPersonal = (props: DialogEditPersonalProps) => {
   const dispatch = useAppDispatch();
 
   const [openDialogAlert, setOpenDialogAlert] = useState(false);
+  const [removeId, setRemoveId] = useState<string[]>([]);
 
   const libraryIcon = Array.from(Object.values(LibraryIcon));
 
@@ -99,6 +101,9 @@ const DialogEditPersonal = (props: DialogEditPersonalProps) => {
   };
 
   const removePersonalInfo = (index: number) => {
+    if (fields[index].id) {
+      setRemoveId([...removeId, fields[index].id]);
+    }
     remove(index);
   };
 
@@ -133,12 +138,12 @@ const DialogEditPersonal = (props: DialogEditPersonalProps) => {
             </div>
             <div className="grid grid-cols-2 gap-2 border-b p-4">
               <div>
-                <InputLabel id="testza">Title</InputLabel>
                 <Controller
                   name={`items.${index}.title`}
                   control={control}
                   render={({ field }) => (
                     <TextField
+                      label="Title"
                       className="w-full"
                       {...field}
                       placeholder="Title"
@@ -149,12 +154,12 @@ const DialogEditPersonal = (props: DialogEditPersonalProps) => {
               </div>
 
               <div>
-                <InputLabel id="testza">Description</InputLabel>
                 <Controller
                   name={`items.${index}.description`}
                   control={control}
                   render={({ field }) => (
                     <TextField
+                      label="Description"
                       className="w-full"
                       {...field}
                       placeholder="Description"
@@ -165,35 +170,39 @@ const DialogEditPersonal = (props: DialogEditPersonalProps) => {
               </div>
 
               <div>
-                <InputLabel id="demo-simple-select-label">Type Icon</InputLabel>
                 <Controller
                   name={`items.${index}.libraryIcon`}
                   control={control}
                   render={({ field }) => (
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      label="Age"
-                      sx={{ width: "100%" }}
-                      {...field}
-                    >
-                      {libraryIcon.map((item) => (
-                        <MenuItem key={item} value={item}>
-                          {item}
-                        </MenuItem>
-                      ))}
-                    </Select>
+                    <FormControl className="w-full">
+                      <InputLabel id="demo-simple-select-label">
+                        Type Icon
+                      </InputLabel>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        label="Type Icon"
+                        sx={{ width: "100%" }}
+                        {...field}
+                      >
+                        {libraryIcon.map((item) => (
+                          <MenuItem key={item} value={item}>
+                            {item}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
                   )}
                 />
               </div>
 
               <div>
-                <InputLabel id="testza">Icon</InputLabel>
                 <Controller
                   name={`items.${index}.icon`}
                   control={control}
                   render={({ field }) => (
                     <TextField
+                      label="Icon"
                       className="w-full"
                       {...field}
                       placeholder="Icon"
@@ -204,12 +213,16 @@ const DialogEditPersonal = (props: DialogEditPersonalProps) => {
               </div>
 
               <div>
-                <InputLabel id="testza">Order</InputLabel>
                 <Controller
                   name={`items.${index}.order`}
                   control={control}
                   render={({ field }) => (
-                    <TextField type="number" className="w-full" {...field} />
+                    <TextField
+                      label="Order"
+                      type="number"
+                      className="w-full"
+                      {...field}
+                    />
                   )}
                 />
               </div>

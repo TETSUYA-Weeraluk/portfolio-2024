@@ -10,4 +10,8 @@ export const pathUrl = {
     get: "/personal-info",
     patch: "/personal-info",
   },
+  education: {
+    get: "/education",
+    patch: "/education",
+  },
 };

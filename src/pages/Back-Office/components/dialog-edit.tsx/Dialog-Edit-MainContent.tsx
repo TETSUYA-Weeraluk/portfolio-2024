@@ -76,58 +76,53 @@ const DialogEditWelcome = (props: DialogEditWelcomeProps) => {
       handleCloseDialogAlert={handleCloseDialogAlert}
       updateData={updateData}
     >
-      <div className="grid grid-cols-3 gap-4">
-        <div className="w-full space-y-2">
-          <h1 className="text-base">Name</h1>
+      <div className="w-full space-y-4">
+        <h1 className="text-xl font-bold">Main content</h1>
+
+        <div className="flex items-center gap-4">
           <Controller
             name="name"
             control={control}
             render={({ field }) => (
-              <TextField className="w-full" {...field} placeholder="Name" />
+              <TextField label="Name" className="w-full" {...field} />
             )}
           />
-        </div>
 
-        <div className="w-full space-y-2">
-          <h1 className="text-base">Nickname</h1>
           <Controller
             name="nickname"
             control={control}
             render={({ field }) => (
-              <TextField className="w-full" {...field} placeholder="Nickname" />
+              <TextField label="Nickname" className="w-full" {...field} />
             )}
           />
-        </div>
 
-        <div className="w-full space-y-2">
-          <h1 className="text-base">Position</h1>
           <Controller
             name="position"
             control={control}
             render={({ field }) => (
-              <TextField className="w-full" {...field} placeholder="Position" />
+              <TextField label="Position" className="w-full" {...field} />
             )}
           />
         </div>
-      </div>
-      <div className="w-full space-y-2">
-        <h1 className="text-base">Welcome Text</h1>
         <Controller
           name="welcomeText"
           control={control}
           render={({ field }) => (
-            <TextField className="w-full" {...field} placeholder="Hi" multiline />
+            <TextField
+              label="Welcome Text"
+              className="w-full"
+              {...field}
+              placeholder="Hi"
+              multiline
+            />
           )}
         />
-      </div>
-      <div className="w-full space-y-2">
-        <h1 className="text-base">Image</h1>
         <Controller
           name="image"
           control={control}
           render={({ field }) => (
             <div className="space-y-4">
-              <TextField className="w-full" {...field} placeholder="image" />
+              <TextField label="Image" className="w-full" {...field} />
               <img src={field.value} alt="" />
             </div>
           )}

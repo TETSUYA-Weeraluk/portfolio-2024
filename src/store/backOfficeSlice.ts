@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { PerosnalInfo, ResponseFormApi } from "../pages/Home/type";
+import { Education, PerosnalInfo, ResponseFormApi } from "../pages/Home/type";
 import { BASE_API, pathUrl } from "../configs/configs";
 import { AboutMeContent, MainContent } from "../pages/Back-Office/type";
 
@@ -52,6 +52,23 @@ export const updatePersonalInfo = createAsyncThunk(
       `${BASE_API}${pathUrl.personalInfo.patch}/${params.id}`,
       {
         data: [...params.data],
+        removeId: [],
+      }
+    );
+
+    return response.data.data;
+  }
+);
+
+export const updateEducation = createAsyncThunk(
+  "backoffice/updateEducation",
+  async (params: { id: string; data: Education[] }) => {
+    console.log(params.data);
+    const response = await axios.patch<ResponseFormApi<Education[]>>(
+      `${BASE_API}${pathUrl.education.patch}/${params.id}`,
+      {
+        education: [...params.data],
+        removeIdsEducation: [],
       }
     );
 

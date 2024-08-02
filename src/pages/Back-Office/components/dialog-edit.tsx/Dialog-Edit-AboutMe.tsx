@@ -73,12 +73,13 @@ const DialogEditAboutMe = (props: DialogEditAboutMeProps) => {
       updateData={updateData}
     >
       <div className="w-full space-y-2">
-        <h1 className="text-base">Content</h1>
+        <h1 className="text-xl font-bold">Content</h1>
         <Controller
           name="content"
           control={control}
           render={({ field }) => (
             <TextField
+              label="Content"
               className="w-full"
               {...field}
               placeholder="Name"

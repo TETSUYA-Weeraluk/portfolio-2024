@@ -1,14 +1,25 @@
-import { RootState } from "../../../store";
-import { useSelector } from "react-redux";
 import { Divider } from "@mui/joy";
+import { useFormContext } from "react-hook-form";
+import { Education } from "../../Home/type";
+import ButtonEditComponent from "./ButtonEdit.component";
+import { useState } from "react";
+import DialogEditEducation from "./dialog-edit.tsx/Dialog-Edit-Education";
 
 const EducationBO = () => {
-  const education = useSelector(
-    (state: RootState) => state.home.portfolio.education
-  );
+  const [open, setOpen] = useState(false);
+  const { watch } = useFormContext();
+  const education = watch("education") as Education[];
 
   const convertDateToYear = (date: string) => {
     return new Date(date).getFullYear().toString();
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClickClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -35,6 +46,17 @@ const EducationBO = () => {
             </div>
           ))}
       </div>
+
+      <div>
+        <ButtonEditComponent handleClickOpen={handleClickOpen} />
+      </div>
+      {open && (
+        <DialogEditEducation
+          open={open}
+          handleClose={() => handleClickClose()}
+          data={education}
+        />
+      )}
     </div>
   );
 };
