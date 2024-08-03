@@ -18,4 +18,8 @@ export const pathUrl = {
     get: "/experience",
     patch: "/experience",
   },
+  skill: {
+    get: "/skill",
+    patch: "/skill",
+  },
 };

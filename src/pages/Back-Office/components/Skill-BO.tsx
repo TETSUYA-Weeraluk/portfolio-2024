@@ -1,9 +1,22 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
 import ImageProjectBO from "./ImageProject-BO";
+import DialogEditSkill from "./dialog-edit.tsx/Dialog-Edit-Skill";
+import ButtonEditComponent from "./ButtonEdit.component";
+import { Skills } from "../../Home/type";
+import { useState } from "react";
+import { useFormContext } from "react-hook-form";
 
 const SkillBO = () => {
-  const skills = useSelector((state: RootState) => state.home.portfolio.skill);
+  const [open, setOpen] = useState(false);
+  const { watch } = useFormContext();
+  const skills = watch("skill") as Skills[];
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClickClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
@@ -40,6 +53,18 @@ const SkillBO = () => {
             </div>
           ))}
       </div>
+
+      <div>
+        <ButtonEditComponent handleClickOpen={handleClickOpen} />
+      </div>
+
+      {open && (
+        <DialogEditSkill
+          open={open}
+          handleClose={() => handleClickClose()}
+          data={skills}
+        />
+      )}
     </>
   );
 };

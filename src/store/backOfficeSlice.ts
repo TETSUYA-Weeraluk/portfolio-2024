@@ -5,6 +5,7 @@ import {
   Experience,
   PerosnalInfo,
   ResponseFormApi,
+  Skills,
 } from "../pages/Home/type";
 import { BASE_API, pathUrl } from "../configs/configs";
 import { AboutMeContent, MainContent } from "../pages/Back-Office/type";
@@ -90,6 +91,22 @@ export const updateExperience = createAsyncThunk(
       {
         exp: [...params.data],
         removeIdsExperience: params.removeId,
+      }
+    );
+
+    return response.data.data;
+  }
+);
+
+export const updateSkill = createAsyncThunk(
+  "backoffice/updateSkill",
+  async (params: { id: string; data: Skills[]; removeId: string[] }) => {
+    console.log(params.data);
+    const response = await axios.patch<ResponseFormApi<Skills[]>>(
+      `${BASE_API}${pathUrl.skill.patch}/${params.id}`,
+      {
+        data: [...params.data],
+        removeIds: params.removeId,
       }
     );
 
