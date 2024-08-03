@@ -58,19 +58,28 @@ const DialogEditEducation = (props: DialogEditEducationProps) => {
 
   useEffect(() => {
     reset({ items: data });
+    console.log(data);
   }, [reset, data]);
 
   const updateData = () => {
-    const newData = getValues("items") as Education[];
-
-    dispatch(updateEducation({ id: id, data: newData })).then((res) => {
-      const newData = res.payload as Education[];
-
-      if (newData && newData.length > 0) {
-        handleOpenDialogAlert();
-        setValue("education", newData);
-      }
+    const value = getValues("items") as Education[];
+    const data = value.map((item) => {
+      return {
+        ...item,
+        order: Number(item.order),
+      };
     });
+
+    dispatch(updateEducation({ id: id, data: data, removeId: removeId })).then(
+      (res) => {
+        const newData = res.payload as Education[];
+
+        if (newData && newData.length > 0) {
+          handleOpenDialogAlert();
+          setValue("education", newData);
+        }
+      }
+    );
   };
 
   const handleCloseDialogAlert = () => {
@@ -88,7 +97,7 @@ const DialogEditEducation = (props: DialogEditEducationProps) => {
 
   const removeSchool = (index: number) => {
     if (fields[index].id) {
-      setRemoveId([...removeId, fields[index].id]);
+      setRemoveId([...removeId, data[index].id]);
     }
     remove(index);
   };

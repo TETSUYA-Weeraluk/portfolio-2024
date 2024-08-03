@@ -19,12 +19,29 @@ import {
 } from "@mui/material";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { updatePersonalInfo } from "../../../../store/backOfficeSlice";
+import * as FaIcons from "react-icons/fa";
+import * as MdIcons from "react-icons/md";
 
 interface DialogEditPersonalProps {
   open: boolean;
   handleClose: () => void;
   data: PerosnalInfo[];
 }
+
+const dynamicIcon = (icon: string, library: "Fa" | "Md") => {
+  switch (library) {
+    case "Fa": {
+      const Icon = FaIcons[icon as keyof typeof FaIcons];
+      return Icon && <Icon fontSize="20" />;
+    }
+    case "Md": {
+      const Icon = MdIcons[icon as keyof typeof MdIcons];
+      return Icon && <Icon fontSize="20" />;
+    }
+    default:
+      return null;
+  }
+};
 
 const DialogEditPersonal = (props: DialogEditPersonalProps) => {
   const { open, handleClose, data } = props;
@@ -75,9 +92,11 @@ const DialogEditPersonal = (props: DialogEditPersonalProps) => {
   }, [reset, data]);
 
   const updateData = () => {
-    const newData = getValues("items") as PerosnalInfo[];
+    const value = getValues("items") as PerosnalInfo[];
 
-    dispatch(updatePersonalInfo({ id: id, data: newData })).then((res) => {
+    dispatch(
+      updatePersonalInfo({ id: id, data: value, removeId: removeId })
+    ).then((res) => {
       const newData = res.payload as PerosnalInfo[];
 
       if (newData && newData.length > 0) {
@@ -102,7 +121,7 @@ const DialogEditPersonal = (props: DialogEditPersonalProps) => {
 
   const removePersonalInfo = (index: number) => {
     if (fields[index].id) {
-      setRemoveId([...removeId, fields[index].id]);
+      setRemoveId([...removeId, data[index].id]);
     }
     remove(index);
   };
@@ -136,7 +155,7 @@ const DialogEditPersonal = (props: DialogEditPersonalProps) => {
                 <FaRegTrashAlt />
               </IconButton>
             </div>
-            <div className="grid grid-cols-2 gap-2 border-b p-4">
+            <div className="grid grid-cols-2 gap-4 border-b p-4">
               <div>
                 <Controller
                   name={`items.${index}.title`}
@@ -147,7 +166,6 @@ const DialogEditPersonal = (props: DialogEditPersonalProps) => {
                       className="w-full"
                       {...field}
                       placeholder="Title"
-                      multiline
                     />
                   )}
                 />
@@ -163,7 +181,6 @@ const DialogEditPersonal = (props: DialogEditPersonalProps) => {
                       className="w-full"
                       {...field}
                       placeholder="Description"
-                      multiline
                     />
                   )}
                 />
@@ -206,7 +223,12 @@ const DialogEditPersonal = (props: DialogEditPersonalProps) => {
                       className="w-full"
                       {...field}
                       placeholder="Icon"
-                      multiline
+                      InputProps={{
+                        endAdornment: dynamicIcon(
+                          field.value,
+                          getValues(`items.${index}.libraryIcon`)
+                        ),
+                      }}
                     />
                   )}
                 />

@@ -46,13 +46,13 @@ export const updateAboutMe = createAsyncThunk(
 
 export const updatePersonalInfo = createAsyncThunk(
   "backoffice/updatePersonalInfo",
-  async (params: { id: string; data: PerosnalInfo[] }) => {
+  async (params: { id: string; data: PerosnalInfo[]; removeId: string[] }) => {
     console.log(params.data);
     const response = await axios.patch<ResponseFormApi<PerosnalInfo[]>>(
       `${BASE_API}${pathUrl.personalInfo.patch}/${params.id}`,
       {
         data: [...params.data],
-        removeId: [],
+        removeId: params.removeId,
       }
     );
 
@@ -62,13 +62,13 @@ export const updatePersonalInfo = createAsyncThunk(
 
 export const updateEducation = createAsyncThunk(
   "backoffice/updateEducation",
-  async (params: { id: string; data: Education[] }) => {
+  async (params: { id: string; data: Education[]; removeId: string[] }) => {
     console.log(params.data);
     const response = await axios.patch<ResponseFormApi<Education[]>>(
       `${BASE_API}${pathUrl.education.patch}/${params.id}`,
       {
         education: [...params.data],
-        removeIdsEducation: [],
+        removeIdsEducation: params.removeId,
       }
     );
 
