@@ -13,10 +13,7 @@ const SkillBO = () => {
       <div className="flex flex-wrap gap-4">
         {skills &&
           skills.map((skill) => (
-            <div
-              key={skill.title}
-              className="space-y-4 bg-gradient-to-b from-[#020024]  to-[#c73659] p-4 rounded-lg"
-            >
+            <div key={skill.title} className="space-y-4 p-4 rounded-lg">
               <h1 className="text-sub-title text-secondary">{skill.title}</h1>
               <div className="wrapper-header p-0 flex-wrap">
                 {skill.skillDescription &&

@@ -1,16 +1,27 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
 import { format } from "date-fns";
+import { useState } from "react";
+import { Experience } from "../../Home/type";
+import { useFormContext } from "react-hook-form";
+import ButtonEditComponent from "./ButtonEdit.component";
+import DialogEditExperience from "./dialog-edit.tsx/Dialog-Edit-Experience";
 
 const ExpBO = () => {
-  const listExperience = useSelector(
-    (state: RootState) => state.home.portfolio.experience
-  );
+  const [open, setOpen] = useState(false);
+  const { watch } = useFormContext();
+  const listExperience = watch("experience") as Experience[];
 
   const convertDateToMonthYear = (dateString: string) => {
     const date = new Date(dateString);
 
     return format(date, "MMMM yyyy");
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClickClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -52,6 +63,17 @@ const ExpBO = () => {
             )}
           </div>
         ))}
+
+      <div>
+        <ButtonEditComponent handleClickOpen={handleClickOpen} />
+      </div>
+      {open && (
+        <DialogEditExperience
+          open={open}
+          handleClose={() => handleClickClose()}
+          data={listExperience}
+        />
+      )}
     </>
   );
 };

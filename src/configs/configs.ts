@@ -14,4 +14,8 @@ export const pathUrl = {
     get: "/education",
     patch: "/education",
   },
+  experience: {
+    get: "/experience",
+    patch: "/experience",
+  },
 };
