@@ -24,7 +24,10 @@ const EducationBO = () => {
 
   return (
     <div className="wrapper-child-content">
-      <h1 className="text-sub-title text-secondary">Education</h1>
+      <div className="flex items-center gap-4">
+        <h1 className="text-sub-title text-secondary">Education</h1>
+        <ButtonEditComponent handleClickOpen={handleClickOpen} />
+      </div>
       <div className="w-full wrapper-child-content space-y-2">
         {education &&
           education.map((list, index) => (
@@ -47,9 +50,6 @@ const EducationBO = () => {
           ))}
       </div>
 
-      <div>
-        <ButtonEditComponent handleClickOpen={handleClickOpen} />
-      </div>
       {open && (
         <DialogEditEducation
           open={open}

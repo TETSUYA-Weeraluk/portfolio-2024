@@ -1,12 +1,6 @@
 import React from "react";
 
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from "@mui/material";
+import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 import DialogAlert from "../Dialog-alert";
 
 interface BaseDialogEditProps {
@@ -15,7 +9,6 @@ interface BaseDialogEditProps {
   handleClose: () => void;
   openDialogAlert: boolean;
   handleCloseDialogAlert: () => void;
-  updateData: () => void;
 }
 
 const BaseDialogEdit = (props: BaseDialogEditProps) => {
@@ -25,7 +18,6 @@ const BaseDialogEdit = (props: BaseDialogEditProps) => {
     handleClose,
     openDialogAlert,
     handleCloseDialogAlert,
-    updateData,
   } = props;
   return (
     <Dialog
@@ -38,30 +30,6 @@ const BaseDialogEdit = (props: BaseDialogEditProps) => {
     >
       <DialogTitle id="alert-dialog-title">Edit</DialogTitle>
       <DialogContent className="space-y-4">{children}</DialogContent>
-      <DialogActions>
-        <Button
-          sx={{
-            backgroundColor: "#C73659",
-            color: "white",
-            "&:hover": {
-              backgroundColor: "#A91D3A",
-            },
-          }}
-          onClick={updateData}
-        >
-          Update
-        </Button>
-        <Button
-          sx={{
-            backgroundColor: "#FFFFFF",
-            color: "#C73659",
-          }}
-          className="button-cancel"
-          onClick={handleClose}
-        >
-          Cancel
-        </Button>
-      </DialogActions>
 
       <DialogAlert
         open={openDialogAlert}

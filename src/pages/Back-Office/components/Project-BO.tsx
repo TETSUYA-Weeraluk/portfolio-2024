@@ -1,19 +1,33 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
 import { Button, Divider } from "@mui/joy";
 import OpenInNew from "@mui/icons-material/OpenInNew";
 import { Language } from "@mui/icons-material";
+import { Projects } from "../../Home/type";
+import { useState } from "react";
+import { useFormContext } from "react-hook-form";
+import ButtonEditComponent from "./ButtonEdit.component";
+import DialogEditProject from "./dialog-edit.tsx/Dialog-Edit-Project";
 
 const ProjectBO = () => {
-  const listProject = useSelector(
-    (state: RootState) => state.home.portfolio.project
-  );
+  const [open, setOpen] = useState(false);
+  const { watch } = useFormContext();
+  const listProject = watch("project") as Projects[];
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClickClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
-      <h1 className="text-title text-center underline-offset-8 underline">
-        Project
-      </h1>
+      <div className="flex justify-center items-center gap-4">
+        <h1 className="text-title text-center underline-offset-8 underline">
+          Project
+        </h1>
+        <ButtonEditComponent handleClickOpen={handleClickOpen} />
+      </div>
       <div className="wrapper-header p-0 flex-wrap justify-center">
         {listProject &&
           listProject.map((project, index) => (
@@ -56,6 +70,14 @@ const ProjectBO = () => {
             </div>
           ))}
       </div>
+
+      {open && (
+        <DialogEditProject
+          open={open}
+          handleClose={() => handleClickClose()}
+          data={listProject}
+        />
+      )}
     </>
   );
 };

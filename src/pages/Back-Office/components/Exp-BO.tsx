@@ -26,9 +26,12 @@ const ExpBO = () => {
 
   return (
     <>
-      <h1 className="text-title text-center underline-offset-8 underline">
-        Experience
-      </h1>
+      <div className="flex justify-center items-center gap-4">
+        <h1 className="text-title text-center underline-offset-8 underline">
+          Experience
+        </h1>
+        <ButtonEditComponent handleClickOpen={handleClickOpen} />
+      </div>
       {listExperience &&
         listExperience.length > 0 &&
         listExperience.map((experience, index) => (
@@ -64,9 +67,6 @@ const ExpBO = () => {
           </div>
         ))}
 
-      <div>
-        <ButtonEditComponent handleClickOpen={handleClickOpen} />
-      </div>
       {open && (
         <DialogEditExperience
           open={open}

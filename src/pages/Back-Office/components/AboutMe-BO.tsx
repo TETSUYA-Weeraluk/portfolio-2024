@@ -32,10 +32,14 @@ const AboutMeBO = () => {
       </div>
       <div className="wrapper-content">
         <div className="wrapper-content">
-          <h1 className=" underline-offset-8 underline text-title">About me</h1>
+          <div className="flex items-center gap-4">
+            <h1 className=" underline-offset-8 underline text-title">
+              About me
+            </h1>
+            <ButtonEditComponent handleClickOpen={handleClickOpen} />
+          </div>
           <p className="text-base-web">{content}</p>
           <div>
-            <ButtonEditComponent handleClickOpen={handleClickOpen} />
             {open && (
               <DialogEditAboutMe
                 open={open}

@@ -36,7 +36,10 @@ const PersonalItemBO = () => {
 
   return (
     <div className="wrapper-child-content">
-      <h1 className="text-sub-title text-secondary">Personal Information</h1>
+      <div className="flex items-center gap-4">
+        <h1 className="text-sub-title text-secondary">Personal Information</h1>
+        <ButtonEditComponent handleClickOpen={handleClickOpen} />
+      </div>
       <div className="w-full">
         {personalList &&
           personalList.map((list) => (
@@ -50,9 +53,6 @@ const PersonalItemBO = () => {
               <span>{list.description}</span>
             </p>
           ))}
-      </div>
-      <div>
-        <ButtonEditComponent handleClickOpen={handleClickOpen} />
       </div>
       {open && (
         <DialogEditPersonal

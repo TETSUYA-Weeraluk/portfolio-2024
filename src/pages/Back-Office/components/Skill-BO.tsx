@@ -20,9 +20,13 @@ const SkillBO = () => {
 
   return (
     <>
-      <div className="text-title text-center underline-offset-8 underline">
-        Skill
+      <div className="flex justify-center items-center gap-4">
+        <div className="text-title text-center underline-offset-8 underline">
+          Skill
+        </div>
+        <ButtonEditComponent handleClickOpen={handleClickOpen} />
       </div>
+
       <div className="flex flex-wrap gap-4">
         {skills &&
           skills.map((skill) => (
@@ -52,10 +56,6 @@ const SkillBO = () => {
               </div>
             </div>
           ))}
-      </div>
-
-      <div>
-        <ButtonEditComponent handleClickOpen={handleClickOpen} />
       </div>
 
       {open && (
